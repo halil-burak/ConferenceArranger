@@ -30,13 +30,14 @@ public class ConferenceArranger {
 	 */
 	public ConferenceArranger(File inputFile) throws IOException {
 		this.input = inputFile;
-		initialize();
+		//initialize();
 	}
 
 	/**
 	 * 
 	 * @throws IOException
 	 */
+	@SuppressWarnings("unused")
 	private void initialize() throws IOException {
 		loadConferencesFromFile();
 	}
@@ -59,7 +60,7 @@ public class ConferenceArranger {
 				} else {
 					confDuration = line.replaceAll("[^\\d.]", "");
 				}
-				Conference conf = new Conference(confName, Double.parseDouble(confDuration));
+				Conference conf = new Conference(confName, Integer.valueOf(confDuration));
 				confList.add(conf);
 				System.out.println("Name of the conference: " + conf.getName() + "... Duration: " + conf.getDuration() + " mins.");
 			}
@@ -74,18 +75,21 @@ public class ConferenceArranger {
 	/**
 	 * 
 	 */
-	public void arrange() {
+	public List<Conference> arrange() {
+		List<Conference> confList = null;
 		try (BufferedReader inputFileBufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(input)))) {
-			List<Conference> confList = new ArrayList<Conference>();
-			List<Double> list = new ArrayList<Double>();
+			confList = new ArrayList<Conference>();
+			List<Integer> list = new ArrayList<Integer>();
 			Conference tempConf = new Conference();
 			confList = loadConferencesFromFile();
 			for(int i = 0; i < confList.size(); i++) {
 				tempConf = confList.get(i);
 				list.add(tempConf.getDuration());
 			}
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return confList;
 	}
 }

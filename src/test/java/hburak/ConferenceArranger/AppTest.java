@@ -1,5 +1,9 @@
 package hburak.ConferenceArranger;
 
+import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -10,6 +14,12 @@ import junit.framework.TestSuite;
 public class AppTest 
     extends TestCase
 {
+	private final static Logger LOGGER = Logger.getLogger(AppTest.class.getName());
+	
+	private Conference conf;
+	private ConferenceArranger confArrngr;
+	private ConferenceSorter confSorter;
+	
     /**
      * Create the test case
      *
@@ -33,6 +43,8 @@ public class AppTest
      */
     public void testApp()
     {
-        assertTrue( true );
+    	File dictionary = new File(ConferenceArrangerMain.class.getClassLoader().getResource("deneme.txt").getFile());
+        conf = new Conference();
+        LOGGER.log(Level.ALL, Thread.currentThread().getStackTrace().toString() + " Finished.");
     }
 }

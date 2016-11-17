@@ -8,14 +8,14 @@ package hburak.ConferenceArranger;
 public class Conference {
 	
 	private String name;
-	private double duration;
+	private int duration;
 	
 	/**
 	 * Constructor with parameters
 	 * @param name
 	 * @param duration
 	 */
-	public Conference(String name, double duration) {
+	public Conference(String name, int duration) {
 		this.name = name;
 		this.duration = duration;
 	}
@@ -44,14 +44,14 @@ public class Conference {
 	 * 
 	 * @return
 	 */
-	public double getDuration() {
+	public int getDuration() {
 		return duration;
 	}
 	/**
 	 * 
 	 * @param duration
 	 */
-	public void setDuration(double duration) {
+	public void setDuration(int duration) {
 		this.duration = duration;
 	}
 	
